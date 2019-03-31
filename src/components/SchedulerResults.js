@@ -1,7 +1,6 @@
 import {connect} from "react-redux";
 import React from "react";
 import Chart from "react-google-charts";
-import TableBody from "./ShowTasks";
 
 class SchedulerResults extends React.Component {
     constructor(props){
@@ -11,35 +10,31 @@ class SchedulerResults extends React.Component {
     render(){
         const { results } = this.props;
         console.log(results);
-        if (results === []){
+        if (results.length === 0){
             return(<div></div>)
         };
-
-        let data = results.map(row => (
-           [' ', 5, 5, 5]
+        let data =  [['Algorithms', 'SSTF', 'FCFS', 'scan']];
+        results.map(row => (
+           data.push([' ', row.sstf, row.fcfs, row.scan])
         ));
         return(
             <div>
-                {/*<Chart*/}
-                    {/*width={'500px'}*/}
-                    {/*height={'300px'}*/}
-                    {/*chartType="Bar"*/}
-                    {/*loader={<div>Loading Chart</div>}*/}
-                    {/*data={[*/}
-                        {/*['Year', 'SSTF', 'FCFS', 'Profit'],*/}
-
-                        {/*[' ', results.sstf, results.fcfs, 0],*/}
-                    {/*]}*/}
-                    {/*options={{*/}
-                        {/*// Material design options*/}
-                        {/*chart: {*/}
-                            {/*title: 'Company Performance',*/}
-                            {/*subtitle: 'Sales, Expenses, and Profit: 2014-2017',*/}
-                        {/*},*/}
-                    {/*}}*/}
-                    {/*// For tests*/}
-                    {/*rootProps={{ 'data-testid': '2' }}*/}
-                {/*/>*/}
+                <Chart
+                    width={'500px'}
+                    height={'300px'}
+                    chartType="Bar"
+                    loader={<div>Loading Chart</div>}
+                    data={data}
+                    options={{
+                        // Material design options
+                        chart: {
+                            title: 'Disk scheduling algorithms',
+                            subtitle: 'simulation of algorithms FCFS, SSTF, SCAN, C-SCAN, EDF, FD-SCAN.',
+                        },
+                    }}
+                    // For tests
+                    rootProps={{ 'data-testid': '2' }}
+                />
             </div>
         )
     }
