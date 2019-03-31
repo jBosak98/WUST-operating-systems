@@ -60,7 +60,6 @@ ShowProcesses.propTypes = {
 
 function mapStateToProps(state) {
     const {processes} = state.ProcessReducer;
-    console.log(processes);
     return {processes}
 };
 
