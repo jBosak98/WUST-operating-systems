@@ -13,7 +13,11 @@ export function ProcessReducer(state = initialState, action) {
         case processConstants.ADD_PROCESS:
             return {
                 processes: [...state.processes, action.newProcess]
-           }
+           };
+        case processConstants.RUN_SCHEDULER:
+            return{
+                ...state,
+            };
         default:
             return{
                 ...state
