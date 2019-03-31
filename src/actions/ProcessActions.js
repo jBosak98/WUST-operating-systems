@@ -1,7 +1,8 @@
 import {processConstants} from "../constants/processConstants";
+import SchedulerService from "../services/SchedulerService";
 
 
-function addProcess(newProcess) {
+export function addProcess(newProcess) {
     return dispatch => {
         const action = {
             newProcess,
@@ -11,4 +12,15 @@ function addProcess(newProcess) {
     }
 }
 
-export default addProcess;
+export function runScheduler(processes) {
+    return dispatch => {
+        const scheduler = new SchedulerService(processes);
+        scheduler.start();
+        const startScheduler = {
+            type: processConstants.RUN_SCHEDULER
+        };
+        dispatch(startScheduler)
+    }
+}
+
+// export default addProcess;
