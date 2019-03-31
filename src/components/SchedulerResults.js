@@ -16,8 +16,8 @@ class SchedulerResults extends React.Component {
 }
 
 function mapStateToProps(state) {
-    const {processes} = state.ProcessReducer;
-    return {processes}
+    const {tasks} = state.TaskReducer;
+    return {tasks}
 }
 
 export default connect(mapStateToProps)(SchedulerResults)

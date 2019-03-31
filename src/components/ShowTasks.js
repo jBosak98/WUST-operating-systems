@@ -10,12 +10,12 @@ import { withStyles} from "@material-ui/core";
 import PropTypes from 'prop-types';
 
 
-class ShowProcesses extends React.Component{
+class ShowTasks extends React.Component{
 
     render() {
-        const { processes } = this.props;
+        const { tasks } = this.props;
         const { classes } = this.props;
-        if (processes.length < 1 || processes === undefined){
+        if (tasks.length < 1 || tasks === undefined){
             return <div/>
         }
         return(
@@ -26,17 +26,17 @@ class ShowProcesses extends React.Component{
                             <TableRow>
                                 <TableCell>id</TableCell>
                                 <TableCell align="right">arrival time</TableCell>
-                                <TableCell align="right">burst time</TableCell>
+                                <TableCell align="right">block address</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {processes.map((row, index) => (
+                            {tasks.map((row, index) => (
                                 <TableRow key={index}>
                                     <TableCell component="th" scope="row">
                                         {index}
                                     </TableCell>
                                     <TableCell align="right">{row.arrivalTime}</TableCell>
-                                    <TableCell align="right">{row.burstTime}</TableCell>
+                                    <TableCell align="right">{row.blockAddress}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
@@ -54,13 +54,13 @@ const styles = {
         float: "left"
     },
 };
-ShowProcesses.propTypes = {
+ShowTasks.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-    const {processes} = state.ProcessReducer;
-    return {processes}
+    const {tasks} = state.TaskReducer;
+    return {tasks}
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(ShowProcesses));
+export default connect(mapStateToProps)(withStyles(styles)(ShowTasks));

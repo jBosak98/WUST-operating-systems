@@ -3,18 +3,18 @@ import {Button, withStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {addProcess, runScheduler} from "../actions/ProcessActions";
+import {addTask, runScheduler} from "../actions/TasksActions";
 
 
 
 
-class AddProcessComponent extends React.Component{
+class AddTaskComponent extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {
             arrivalTime: 0,
-            burstTime: 0,
+            blockAddress: 0,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
@@ -25,10 +25,11 @@ class AddProcessComponent extends React.Component{
 
     handleAdd(event){
         const { dispatch } = this.props;
-        const { arrivalTime, burstTime } = this.state;
-        dispatch(addProcess({
-            arrivalTime,
-            burstTime
+        const { arrivalTime, blockAddress } = this.state;
+        dispatch(addTask({
+            arrivalTime: arrivalTime < 1 ? 1: arrivalTime,
+            blockAddress: blockAddress < 1 ? 1 : blockAddress,
+            waitingTime: 0,
         }));
     };
 
@@ -39,8 +40,8 @@ class AddProcessComponent extends React.Component{
     };
     //
     handleStart(){
-        const { dispatch, processes } = this.props;
-        dispatch(runScheduler(processes));
+        const { dispatch, tasks } = this.props;
+        dispatch(runScheduler(tasks));
     };
 
     componentDidMount() {
@@ -59,9 +60,9 @@ class AddProcessComponent extends React.Component{
                 />
                 <br/>
                 <TextField
-                    label="Burst time"
+                    label="Block address"
                     type="number"
-                    onChange={event => {this.handleChange('burstTime', event)}}
+                    onChange={event => {this.handleChange('blockAddress', event)}}
                 />
                 <br/>
                 <br/>
@@ -108,13 +109,13 @@ const styles = {
 
     }
 };
-AddProcessComponent.propTypes = {
+AddTaskComponent.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
-    const {processes} = state.ProcessReducer;
-    return {processes}
+    const {tasks} = state.TaskReducer;
+    return {tasks}
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(AddProcessComponent));
+export default connect(mapStateToProps)(withStyles(styles)(AddTaskComponent));

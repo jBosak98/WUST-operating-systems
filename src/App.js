@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import AddProcessComponent from "./components/AddProcessComponent";
-import ShowProcesses from "./components/ShowProcesses";
+
 import SchedulerResults from "./components/SchedulerResults";
+import ShowTasks from "./components/ShowTasks";
+import AddTaskComponent from "./components/AddTaskComponent";
 
 class App extends Component {
 
@@ -11,8 +12,8 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
         </header>
-          <ShowProcesses/>
-          <AddProcessComponent/>
+          <ShowTasks/>
+          <AddTaskComponent/>
           <SchedulerResults/>
       </div>
     );
