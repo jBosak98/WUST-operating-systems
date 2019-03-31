@@ -13,6 +13,11 @@ class SchedulerService{
         let fcfs = this.fcfs(JSON.parse(procString));
         let sstf = this.sstf(JSON.parse(procString));
         console.log("sstf: " + sstf);
+        const results = {
+            sstf,
+            fcfs
+        };
+        return results
     }
 
     fcfs(proc){

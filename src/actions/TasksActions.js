@@ -15,11 +15,12 @@ export function addTask(newTask) {
 export function runScheduler(tasks) {
     return dispatch => {
         const scheduler = new SchedulerService(tasks);
-        scheduler.start();
-        const startScheduler = {
+        let results = scheduler.start();
+        const action = {
+            results: results,
             type: tasksConstants.RUN_SCHEDULER
         };
-        dispatch(startScheduler)
+        dispatch(action)
     }
 }
 
