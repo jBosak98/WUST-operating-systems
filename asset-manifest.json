@@ -1,13 +1,13 @@
 {
-  "main.css": "/static/css/main.293d5d47.chunk.css",
-  "main.js": "/static/js/main.0169b40e.chunk.js",
-  "main.js.map": "/static/js/main.0169b40e.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
-  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
-  "static/js/2.fcbd422b.chunk.js": "/static/js/2.fcbd422b.chunk.js",
-  "static/js/2.fcbd422b.chunk.js.map": "/static/js/2.fcbd422b.chunk.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.eee68347d0803c2372cde17fbd9a2955.js": "/precache-manifest.eee68347d0803c2372cde17fbd9a2955.js",
-  "service-worker.js": "/service-worker.js",
-  "static/css/main.293d5d47.chunk.css.map": "/static/css/main.293d5d47.chunk.css.map"
+  "main.css": "/WUST-operating-systems/static/css/main.293d5d47.chunk.css",
+  "main.js": "/WUST-operating-systems/static/js/main.f1669311.chunk.js",
+  "main.js.map": "/WUST-operating-systems/static/js/main.f1669311.chunk.js.map",
+  "runtime~main.js": "/WUST-operating-systems/static/js/runtime~main.59139356.js",
+  "runtime~main.js.map": "/WUST-operating-systems/static/js/runtime~main.59139356.js.map",
+  "static/js/2.fcbd422b.chunk.js": "/WUST-operating-systems/static/js/2.fcbd422b.chunk.js",
+  "static/js/2.fcbd422b.chunk.js.map": "/WUST-operating-systems/static/js/2.fcbd422b.chunk.js.map",
+  "index.html": "/WUST-operating-systems/index.html",
+  "precache-manifest.75c0312d9a5810217bc41c24004e18f1.js": "/WUST-operating-systems/precache-manifest.75c0312d9a5810217bc41c24004e18f1.js",
+  "service-worker.js": "/WUST-operating-systems/service-worker.js",
+  "static/css/main.293d5d47.chunk.css.map": "/WUST-operating-systems/static/css/main.293d5d47.chunk.css.map"
 }
