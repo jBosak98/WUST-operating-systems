@@ -2,8 +2,8 @@ import * as React from "react";
 import {Button, withStyles} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import {connect} from "react-redux";
-import addProcess from "../actions/ProcessActions";
 import PropTypes from "prop-types";
+import {addProcess, runScheduler} from "../actions/ProcessActions";
 
 
 
@@ -14,13 +14,16 @@ class AddProcessComponent extends React.Component{
         super(props);
         this.state = {
             arrivalTime: 0,
-            burstTime: 0
+            burstTime: 0,
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+        this.handleAdd = this.handleAdd.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleStart = this.handleStart.bind(this);
 
     }
 
-    handleAdd = (event) => {
+    handleAdd(event){
         const { dispatch } = this.props;
         const { arrivalTime, burstTime } = this.state;
         dispatch(addProcess({
@@ -29,14 +32,15 @@ class AddProcessComponent extends React.Component{
         }));
     };
 
-    handleChange = input => e => {
+    handleChange(input, e) {
         this.setState({
             [input]: e.target.value
         });
     };
-
-    handleStart = (event) => {
-        console.log("start")
+    //
+    handleStart(){
+        const { dispatch, processes } = this.props;
+        dispatch(runScheduler(processes));
     };
 
     componentDidMount() {
@@ -51,13 +55,13 @@ class AddProcessComponent extends React.Component{
                 <TextField
                     label="Arrival time"
                     type="number"
-                    onChange={this.handleChange('arrivalTime')}
+                    onChange={event => {this.handleChange('arrivalTime', event)}}
                 />
                 <br/>
                 <TextField
                     label="Burst time"
                     type="number"
-                    onChange={this.handleChange('burstTime')}
+                    onChange={event => {this.handleChange('burstTime', event)}}
                 />
                 <br/>
                 <br/>
@@ -108,5 +112,9 @@ AddProcessComponent.propTypes = {
     classes: PropTypes.object.isRequired
 };
 
+function mapStateToProps(state) {
+    const {processes} = state.ProcessReducer;
+    return {processes}
+};
 
-export default connect()(withStyles(styles)(AddProcessComponent));
+export default connect(mapStateToProps)(withStyles(styles)(AddProcessComponent));
