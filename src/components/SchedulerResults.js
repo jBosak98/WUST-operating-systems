@@ -13,9 +13,9 @@ class SchedulerResults extends React.Component {
         if (results.length === 0){
             return(<div></div>)
         };
-        let data =  [['Algorithms', 'SSTF', 'FCFS', 'scan']];
+        let data =  [['Algorithms', 'SSTF', 'FCFS', 'SCAN', 'C-SCAN', 'EDF', 'FD-SCAN']];
         results.map(row => (
-           data.push([' ', row.sstf, row.fcfs, row.scan])
+           data.push([' ', row.sstf, row.fcfs, row.scan, row.cscan, row.edf, row.fdscan])
         ));
         return(
             <div>
