@@ -14,6 +14,9 @@
                     i++;
                 }
             }
+            queue = queue.filter(function (task) {
+                return task.deadline >= Math.abs(headPosition - task.blockAddress) + time
+            });
             if (queue.length !== 0) {
                 actual = queue.shift();
                 headMovement += Math.abs(headPosition - actual.blockAddress);
