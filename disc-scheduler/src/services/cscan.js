@@ -5,6 +5,7 @@ export function cscan(proc){
     let actual = undefined;
     let headPosition = 0;
     let headMovement = 0;
+    let taskDone = 0;
     while (i < proc.length || queue.length !== 0) {
         for (let p = i; p < proc.length; p++){
             if (time >= proc[p].arrivalTime){
@@ -29,8 +30,7 @@ export function cscan(proc){
                     return headPosition < task.blockAddress
                 });
             }
-            console.log("headMovement");
-            console.log(headMovement);
+
 
             tmp.map(function (task) {
                 if (Math.abs(headPosition - task.blockAddress) < Math.abs(headPosition - actual.blockAddress)){
@@ -40,13 +40,16 @@ export function cscan(proc){
             queue = queue.filter(function (task) {
                 return task !== actual;
             });
-
-            console.log("actual");
-            console.log(actual);
+            console.log("actual")
+            console.log(actual)
             headMovement += Math.abs(headPosition - actual.blockAddress);
+            time  += Math.abs(headPosition - actual.blockAddress);
             headPosition = actual.blockAddress;
+            taskDone++;
+
+        }else {
+            time++;
         }
-        time++;
     }
-    return headMovement
+    return { headMovement, taskDone }
 }

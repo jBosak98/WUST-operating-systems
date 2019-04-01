@@ -10,13 +10,30 @@ class SchedulerResults extends React.Component {
     render(){
         const { results } = this.props;
         console.log(results);
-        if (results.length === 0){
+        if (results === undefined){
             return(<div></div>)
         };
         let data =  [['Algorithms', 'SSTF', 'FCFS', 'SCAN', 'C-SCAN', 'EDF', 'FD-SCAN']];
-        results.map(row => (
-           data.push([' ', row.sstf, row.fcfs, row.scan, row.cscan, row.edf, row.fdscan])
-        ));
+        // results.map(row => (
+           data.push([
+               'time based on head movements',
+               results.sstf.headMovement,
+               results.fcfs.headMovement,
+               results.scan.headMovement,
+               results.cscan.headMovement,
+               results.edf.headMovement,
+               results.fdscan.headMovement
+           ]);
+           data.push([
+               'task finished',
+               results.sstf.taskDone,
+               results.fcfs.taskDone,
+               results.scan.taskDone,
+               results.cscan.taskDone,
+               results.edf.taskDone,
+               results.fdscan.taskDone
+           ]);
+
         return(
             <div>
                 <Chart
@@ -26,13 +43,11 @@ class SchedulerResults extends React.Component {
                     loader={<div>Loading Chart</div>}
                     data={data}
                     options={{
-                        // Material design options
                         chart: {
                             title: 'Disk scheduling algorithms',
                             subtitle: 'simulation of algorithms FCFS, SSTF, SCAN, C-SCAN, EDF, FD-SCAN.',
                         },
                     }}
-                    // For tests
                     rootProps={{ 'data-testid': '2' }}
                 />
             </div>

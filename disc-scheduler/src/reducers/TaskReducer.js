@@ -3,7 +3,7 @@ import {tasksConstants} from "../constants/TasksConstants";
 
 const initialState = {
     tasks: [],
-    results: [],
+    results: undefined,
 };
 
 
@@ -20,7 +20,7 @@ export function TaskReducer(state = initialState, action) {
             const { results } = action;
             return{
                 ...state,
-                results: [...state.results, results]
+                results: results
             };
         default:
             return{

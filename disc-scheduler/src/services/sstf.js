@@ -5,6 +5,7 @@ export function sstf(proc){
     let actual = undefined;
     let headPosition = 0;
     let headMovement = 0;
+    let taskDone = 0;
     while (i < proc.length || queue.length !== 0) {
         for (let p = i; p < proc.length; p++){
             if (time >= proc[p].arrivalTime){
@@ -27,10 +28,11 @@ export function sstf(proc){
             });
             headMovement += Math.abs(headPosition - actual.blockAddress);
             headPosition = actual.blockAddress;
+            taskDone++;
         }
         time++;
     }
-    return headMovement
+    return { headMovement, taskDone }
 }
 
 // export default sstf;
