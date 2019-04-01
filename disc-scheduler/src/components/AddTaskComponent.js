@@ -25,10 +25,11 @@ class AddTaskComponent extends React.Component{
 
     handleAdd(event){
         const { dispatch } = this.props;
-        const { arrivalTime, blockAddress } = this.state;
+        const { arrivalTime, blockAddress, deadline } = this.state;
         dispatch(addTask({
             arrivalTime: arrivalTime < 1 ? 1: arrivalTime,
             blockAddress: blockAddress < 1 ? 1 : blockAddress,
+            deadline: deadline < 1 ? 1 : deadline,
             waitingTime: 0,
         }));
     };
@@ -63,6 +64,12 @@ class AddTaskComponent extends React.Component{
                     label="Block address"
                     type="number"
                     onChange={event => {this.handleChange('blockAddress', event)}}
+                />
+                <br/>
+                <TextField
+                    label="Deadline"
+                    type="number"
+                    onChange={event => {this.handleChange('deadline', event)}}
                 />
                 <br/>
                 <br/>
