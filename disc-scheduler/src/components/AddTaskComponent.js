@@ -15,6 +15,7 @@ class AddTaskComponent extends React.Component{
         this.state = {
             arrivalTime: 0,
             blockAddress: 0,
+            deadline: 0
         };
         this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
