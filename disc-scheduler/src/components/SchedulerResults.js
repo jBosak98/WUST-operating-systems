@@ -6,29 +6,36 @@ class SchedulerResults extends React.Component {
 
     render(){
         const { results } = this.props;
-        if (results === undefined){
-            return(<div></div>)
-        };
+        // if (results === undefined){
+        //     return(<div></div>)
+        // };
         let data =  [['Algorithms', 'SSTF', 'FCFS', 'SCAN', 'C-SCAN', 'EDF', 'FD-SCAN']];
-           data.push([
-               'time based on head movements',
-               results.sstf.headMovement,
-               results.fcfs.headMovement,
-               results.scan.headMovement,
-               results.cscan.headMovement,
-               results.edf.headMovement,
-               results.fdscan.headMovement
-           ]);
-           data.push([
-               'task finished',
-               results.sstf.taskDone,
-               results.fcfs.taskDone,
-               results.scan.taskDone,
-               results.cscan.taskDone,
-               results.edf.taskDone,
-               results.fdscan.taskDone
-           ]);
+        if (results!== undefined) {
 
+
+            data.push([
+                'time based on head movements',
+                results.sstf.headMovement,
+                results.fcfs.headMovement,
+                results.scan.headMovement,
+                results.cscan.headMovement,
+                results.edf.headMovement,
+                results.fdscan.headMovement
+            ]);
+            data.push([
+                'task finished',
+                results.sstf.taskDone,
+                results.fcfs.taskDone,
+                results.scan.taskDone,
+                results.cscan.taskDone,
+                results.edf.taskDone,
+                results.fdscan.taskDone
+            ]);
+        }
+        else {
+            data.push(['time based on head movements', 0, 0, 0, 0, 0, 0]);
+            data.push(['task finished', 0, 0, 0, 0, 0, 0]);
+        }
         return(
             <div>
                 <Chart

@@ -17,7 +17,6 @@ class AddTaskComponent extends React.Component{
             blockAddress: 0,
             deadline: 0
         };
-        this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
         this.handleAdd = this.handleAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleStart = this.handleStart.bind(this);
@@ -29,7 +28,7 @@ class AddTaskComponent extends React.Component{
         const { arrivalTime, blockAddress, deadline } = this.state;
         dispatch(addTask({
             arrivalTime: arrivalTime < 1 ? 1: arrivalTime,
-            blockAddress: blockAddress < 1 ? 1 : blockAddress,
+            blockAddress: blockAddress < 0 ? 0 : blockAddress,
             deadline: deadline < 1 ? 1 : deadline,
             waitingTime: 0,
         }));
@@ -46,16 +45,16 @@ class AddTaskComponent extends React.Component{
         dispatch(runScheduler(tasks));
     };
 
-    componentDidMount() {
-        this.updateWindowDimensions();
-        window.addEventListener('resize', this.updateWindowDimensions)
-    }
+
     render(){
         const { classes } = this.props;
-        const { isCollapsed } = this.state;
         return(
-            <div className={isCollapsed ?  classes.tightRoot: classes.wideRoot}>
+            <div className={classes.root}>
+               <div className={classes.insideRoot}>
+
+
                 <TextField
+                    className={classes.marginTop}
                     label="Arrival time"
                     type="number"
                     onChange={event => {this.handleChange('arrivalTime', event)}}
@@ -86,35 +85,25 @@ class AddTaskComponent extends React.Component{
                 >
                     Start
                 </Button>
+               </div>
             </div>
         )
     }
 
-    updateWindowDimensions() {
-        const w = window.innerWidth;
-        const isCollapsed = w <= 960;
-        this.setState({
-            width: w,
-            isCollapsed
-        });
-    }
 }
 const styles = {
-    wideRoot: {
-        position: "fixed",
+
+    root: {
         display: "inline-block",
-        margin: "auto",
-        marginTop: "50px",
-        left: "50%",
-        transform: "translateX(-50%)"
+        width: "300px",
+        height: "300px"
+
     },
-    tightRoot: {
-
-        position: "inherit",
-        display: "inline-block",
-        margin: "auto",
-        marginTop: "50px",
-
+    insideRoot: {
+        display: "inline-block"
+    },
+    marginTop: {
+        marginTop: "15px"
     }
 };
 AddTaskComponent.propTypes = {
