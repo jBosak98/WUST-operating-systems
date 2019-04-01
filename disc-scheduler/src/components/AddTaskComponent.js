@@ -20,6 +20,7 @@ class AddTaskComponent extends React.Component{
         this.handleAdd = this.handleAdd.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleStart = this.handleStart.bind(this);
+        this.randomGenerate = this.randomGenerate.bind(this);
 
     }
 
@@ -45,7 +46,16 @@ class AddTaskComponent extends React.Component{
         dispatch(runScheduler(tasks));
     };
 
-
+    randomGenerate(){
+        const { dispatch } = this.props;
+        const arrivalTime = Math.floor(Math.random() * 100);
+        dispatch(addTask({
+            arrivalTime,
+            blockAddress: Math.floor(Math.random() * 100),
+            deadline: Math.floor(arrivalTime + (100-arrivalTime+1)*Math.random()),
+            waitingTime: 0,
+        }));
+    }
     render(){
         const { classes } = this.props;
         return(
@@ -85,6 +95,12 @@ class AddTaskComponent extends React.Component{
                 >
                     Start
                 </Button>
+                   <Button
+                       variant="contained"
+                       onClick={this.randomGenerate}
+                   >
+                       random generate
+                   </Button>
                </div>
             </div>
         )
