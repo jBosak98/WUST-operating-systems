@@ -27,10 +27,12 @@ export function sstf(proc){
                 return task !== actual;
             });
             headMovement += Math.abs(headPosition - actual.blockAddress);
+            time += Math.abs(headPosition - actual.blockAddress);
             headPosition = actual.blockAddress;
             taskDone++;
+        }else {
+            time++;
         }
-        time++;
     }
     return { headMovement, taskDone }
 }

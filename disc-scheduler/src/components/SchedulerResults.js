@@ -3,18 +3,13 @@ import React from "react";
 import Chart from "react-google-charts";
 
 class SchedulerResults extends React.Component {
-    constructor(props){
-        super(props);
 
-    }
     render(){
         const { results } = this.props;
-        console.log(results);
         if (results === undefined){
             return(<div></div>)
         };
         let data =  [['Algorithms', 'SSTF', 'FCFS', 'SCAN', 'C-SCAN', 'EDF', 'FD-SCAN']];
-        // results.map(row => (
            data.push([
                'time based on head movements',
                results.sstf.headMovement,
@@ -57,8 +52,6 @@ class SchedulerResults extends React.Component {
 
 function mapStateToProps(state) {
     const {tasks, results} = state.TaskReducer;
-    // console.log("results");
-    // console.log(results);
     return {tasks, results}
 }
 

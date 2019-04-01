@@ -27,6 +27,7 @@ class ShowTasks extends React.Component{
                                 <TableCell>id</TableCell>
                                 <TableCell align="right">arrival time</TableCell>
                                 <TableCell align="right">block address</TableCell>
+                                <TableCell align="right">deadline</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -37,6 +38,7 @@ class ShowTasks extends React.Component{
                                     </TableCell>
                                     <TableCell align="right">{row.arrivalTime}</TableCell>
                                     <TableCell align="right">{row.blockAddress}</TableCell>
+                                    <TableCell align="right">{row.deadline}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

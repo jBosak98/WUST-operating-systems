@@ -26,11 +26,15 @@ export function fdscan(proc) {
             queue = queue.filter(function (task) {
                 return task !== actual;
             });
+            console.log("actual")
+            console.log(actual)
             headMovement += Math.abs(headPosition - actual.blockAddress);
+            time += Math.abs(headPosition - actual.blockAddress);
             headPosition = actual.blockAddress;
             taskDone++;
+        }else{
+            time++;
         }
-        time++;
     }
     return { headMovement, taskDone }
 }

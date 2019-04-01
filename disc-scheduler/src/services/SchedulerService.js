@@ -13,8 +13,6 @@ class SchedulerService{
     }
 
     start() {
-        console.log("start");
-        console.log(this.tasks);
         let procString = JSON.stringify(this.tasks);
         const results = {
             sstf: sstf(JSON.parse(procString)),
