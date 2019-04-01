@@ -11,10 +11,8 @@ class SchedulerResults extends React.Component {
         // };
         let data =  [['Algorithms', 'SSTF', 'FCFS', 'SCAN', 'C-SCAN', 'EDF', 'FD-SCAN']];
         if (results!== undefined) {
-
-
             data.push([
-                'time based on head movements',
+                'time based on \nhead movements',
                 results.sstf.headMovement,
                 results.fcfs.headMovement,
                 results.scan.headMovement,
@@ -31,10 +29,20 @@ class SchedulerResults extends React.Component {
                 results.edf.taskDone,
                 results.fdscan.taskDone
             ]);
+            data.push([
+                'idle time',
+                results.sstf.idleTime,
+                results.fcfs.idleTime,
+                results.scan.idleTime,
+                results.cscan.idleTime,
+                results.edf.idleTime,
+                results.fdscan.idleTime
+            ]);
         }
         else {
-            data.push(['time based on head movements', 0, 0, 0, 0, 0, 0]);
+            data.push(['time based on \nhead movements', 0, 0, 0, 0, 0, 0]);
             data.push(['task finished', 0, 0, 0, 0, 0, 0]);
+            data.push(['idle time', 0, 0, 0, 0, 0, 0]);
         }
         return(
             <div>

@@ -6,6 +6,8 @@ export function cscan(proc){
     let headPosition = 0;
     let headMovement = 0;
     let taskDone = 0;
+    let idleTime = 0;
+
     while (i < proc.length || queue.length !== 0) {
         for (let p = i; p < proc.length; p++){
             if (time >= proc[p].arrivalTime){
@@ -47,7 +49,8 @@ export function cscan(proc){
 
         }else {
             time++;
+            idleTime++;
         }
     }
-    return { headMovement, taskDone }
+    return { headMovement, taskDone, idleTime }
 }

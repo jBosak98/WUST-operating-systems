@@ -18,6 +18,7 @@ export function TaskReducer(state = initialState, action) {
            };
         case tasksConstants.RUN_SCHEDULER:
             const { results } = action;
+            console.log(results);
             return{
                 ...state,
                 results: results
