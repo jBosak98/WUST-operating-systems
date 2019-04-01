@@ -49,10 +49,12 @@ class AddTaskComponent extends React.Component{
     randomGenerate(){
         const { dispatch } = this.props;
         const arrivalTime = Math.floor(Math.random() * 100);
+        const blockAddress = Math.floor(Math.random() * 100);
+        const deadline = Math.floor(arrivalTime + blockAddress + (100 - arrivalTime + blockAddress +1)*Math.random());
         dispatch(addTask({
             arrivalTime,
-            blockAddress: Math.floor(Math.random() * 100),
-            deadline: Math.floor(arrivalTime + (100-arrivalTime+1)*Math.random()),
+            blockAddress,
+            deadline,
             waitingTime: 0,
         }));
     }

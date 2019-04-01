@@ -21,6 +21,7 @@
             });
             if (queue.length !== 0) {
                 actual = queue.shift();
+                console.log(actual);
                 headMovement += Math.abs(headPosition - actual.blockAddress);
                 time += Math.abs(headPosition - actual.blockAddress);
                 headPosition = actual.blockAddress;
