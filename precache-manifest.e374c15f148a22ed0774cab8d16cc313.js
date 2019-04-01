@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/WUST-operating-systems/static/js/runtime~main.59139356.js"
   },
   {
-    "revision": "3767f6e675034ef6c08d",
-    "url": "/WUST-operating-systems/static/js/main.f6b065e1.chunk.js"
+    "revision": "0360f89b39fd9b73327a",
+    "url": "/WUST-operating-systems/static/js/main.826f0383.chunk.js"
   },
   {
     "revision": "f4960eb9c0f2f95d4835",
     "url": "/WUST-operating-systems/static/js/2.d55070df.chunk.js"
   },
   {
-    "revision": "3767f6e675034ef6c08d",
+    "revision": "0360f89b39fd9b73327a",
     "url": "/WUST-operating-systems/static/css/main.293d5d47.chunk.css"
   },
   {
-    "revision": "50f3876133edfb4334d1f4988d8d607b",
+    "revision": "c5e6b50520366074bf147941e81a20ab",
     "url": "/WUST-operating-systems/index.html"
   }
 ];
