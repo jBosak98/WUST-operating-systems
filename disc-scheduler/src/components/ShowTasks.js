@@ -24,7 +24,6 @@ class ShowTasks extends React.Component{
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>id</TableCell>
                                 <TableCell align="right">arrival time</TableCell>
                                 <TableCell align="right">block address</TableCell>
                                 <TableCell align="right">deadline</TableCell>
@@ -33,9 +32,6 @@ class ShowTasks extends React.Component{
                         <TableBody>
                             {tasks.map((row, index) => (
                                 <TableRow key={index}>
-                                    <TableCell component="th" scope="row">
-                                        {index}
-                                    </TableCell>
                                     <TableCell align="right">{row.arrivalTime}</TableCell>
                                     <TableCell align="right">{row.blockAddress}</TableCell>
                                     <TableCell align="right">{row.deadline}</TableCell>
