@@ -7,13 +7,14 @@ const initialState = {
 };
 
 
-
-
 export function TaskReducer(state = initialState, action) {
     switch (action.type) {
         case tasksConstants.ADD_TASK:
+            let tasks = [...state.tasks, action.newTask]
             return {
-                tasks: [...state.tasks, action.newTask],
+                tasks: tasks.sort(function (a, b) {
+                    return a.arrivalTime - b.arrivalTime
+                }),
                 results: state.results
            };
         case tasksConstants.RUN_SCHEDULER:
