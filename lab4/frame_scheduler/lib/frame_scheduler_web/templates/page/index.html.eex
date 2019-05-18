@@ -5,7 +5,7 @@
 
 <section class="row">
   <div class="col-lg-6">
-    <h2>Column Chart</h2>
+    <h2>Number of page faults</h2>
     <%= raw Chartkick.column_chart @simple_data %>
   </div>
 
