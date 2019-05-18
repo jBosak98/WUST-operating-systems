@@ -3,13 +3,20 @@ defmodule FrameScheduler.Algorithms do
 
 
     def scheduler(processes, physical_memory) do
+
         equal_distribution = Enum.map(1..length(processes), fn x -> physical_memory/length(processes) end)
+        equal_number_of_tasks = Enum.filter(equal_distribution, fn x-> x != 0 end) |> Enum.count
+
         random_distribution = random_distr(processes, physical_memory)
+        random_number_of_tasks = Enum.filter(random_distribution, fn x-> x != 0 end) |> Enum.count
+        
         prop_distribution = prop_distr(processes,physical_memory)
+        prop_number_of_tasks = Enum.filter(prop_distribution, fn x-> x != 0 end) |> Enum.count
+
         [
-            ["equal (#{Enum.filter(equal_distribution, fn x-> x != 0 end) |> Enum.count} tasks)", page_faults(processes, equal_distribution, 0)],
-            ["random (#{Enum.filter(random_distribution, fn x-> x != 0 end) |> Enum.count} tasks)", page_faults(processes, random_distribution, 0)],
-            ["proportional (#{Enum.filter(prop_distribution, fn x-> x != 0 end) |> Enum.count} tasks)", page_faults(processes, prop_distribution, 0)]
+            ["equal (#{equal_number_of_tasks} tasks)", page_faults(processes, equal_distribution, 0)],
+            ["random (#{random_number_of_tasks} tasks)", page_faults(processes, random_distribution, 0)],
+            ["proportional (#{prop_number_of_tasks} tasks)", page_faults(processes, prop_distribution, 0)]
         ]
     end
 
