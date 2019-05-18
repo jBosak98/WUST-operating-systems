@@ -1,0 +1,12 @@
+<section class="phx-hero">
+  <h1>Frame allocation algorithm</h1>
+  <p>random, equal and proportional algorithms</p>
+</section>
+
+<section class="row">
+  <div class="col-lg-6">
+    <h2>Number of page faults</h2>
+    <%= raw Chartkick.column_chart @simple_data %>
+  </div>
+
+</section>
