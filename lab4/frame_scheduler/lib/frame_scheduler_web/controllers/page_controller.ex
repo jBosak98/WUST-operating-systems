@@ -3,9 +3,18 @@ defmodule FrameSchedulerWeb.PageController do
 
 
   def index(conn, _params) do
-    a = [[1,2,3,4,5,6,1,2,3], [1,2,3,4], [1,1,1,1,1]]
-    pageFaults = a |> FrameScheduler.Algorithms.scheduler |> Poison.encode!
+    a = generate_processes(20,30,0,5)
+    # IO.inspect(a)
+    pageFaults = FrameScheduler.Algorithms.scheduler(a, 53) |> Poison.encode!
     render conn, "index.html", simple_data: pageFaults
+  end
+
+  def generate_processes(tasks, pages, max, min) do
+    1..tasks |> Enum.map(fn _ ->
+      1..pages |> Enum.map(fn _ ->
+        (:rand.uniform() * (max - min) + min) |> Float.round(0) |> trunc()
+      end)
+    end)
   end
 
 end
