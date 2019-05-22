@@ -60,6 +60,9 @@ select {
   display: block;
   margin: -1rem 0 2rem;
 }
+.chart-margin {
+  margin: 15px;
+}
 
 /* Phoenix promo and logo */
 .phx-hero {
