@@ -6,15 +6,15 @@
 <section class="row">
   <div class="col-lg-6 chart-margin">
     <h2>CPU load</h2>
-    <%= raw Chartkick.column_chart @simple_data %>
+    <%= raw Chartkick.column_chart @cpu_load %>
   </div>
   <div class="col-lg-6 chart-margin">
     <h2>number of requests</h2>
-    <%= raw Chartkick.column_chart @simple_data %>
+    <%= raw Chartkick.column_chart @number_of_requests %>
   </div>
   <div class="col-lg-6 chart-margin">
     <h2>number of process migration</h2>
-    <%= raw Chartkick.column_chart @simple_data %>
+    <%= raw Chartkick.column_chart @number_of_migration %>
   </div>
 
 </section>
